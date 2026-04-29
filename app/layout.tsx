@@ -17,20 +17,20 @@ export const metadata: Metadata = {
   description:
     "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
   icons: {
-    icon: "/logo-boletas.png",
+    icon: "/logoboletas.png",
   },
   openGraph: {
     title: "Boletas de pago - DMO S.R.L.",
     description:
       "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
-    images: "/logo-boletas.png",
+    images: "/logoboletas.png",
   },
   twitter: {
     card: "summary_large_image",
     title: "Boletas de pago - DMO S.R.L.",
     description:
       "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
-    images: "/logo-boletas.png",
+    images: "/logoboletas.png",
   },
 };
 
