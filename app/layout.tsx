@@ -12,25 +12,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/** URL pública del sitio: obligatoria para resolver OG/Twitter a URLs absolutas. En Vercel define NEXT_PUBLIC_SITE_URL (p. ej. https://tu-dominio.com). */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Boletas de pago - DMO S.R.L.",
   description:
     "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
   icons: {
-    icon: "/logoboletas.png",
+    icon: [{ url: "/logoboletas.png", type: "image/png" }],
   },
   openGraph: {
+    type: "website",
+    locale: "es_BO",
+    siteName: "DMO S.R.L.",
     title: "Boletas de pago - DMO S.R.L.",
     description:
       "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
-    images: "/logoboletas.png",
+    images: [
+      {
+        url: "/logoboletas.png",
+        alt: "DMO S.R.L. - Sistema de boletas de pago",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Boletas de pago - DMO S.R.L.",
     description:
       "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
-    images: "/logoboletas.png",
+    images: ["/logoboletas.png"],
   },
 };
 
