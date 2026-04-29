@@ -13,9 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Boletas de pago",
+  title: "Boletas de pago - DMO S.R.L.",
   description:
-    "Carga de planillas Excel, validación, generación de PDF y envío por correo.",
+    "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
+  icons: {
+    icon: "/logo-boletas.png",
+  },
+  openGraph: {
+    title: "Boletas de pago - DMO S.R.L.",
+    description:
+      "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
+    images: "/logo-boletas.png",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Boletas de pago - DMO S.R.L.",
+    description:
+      "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
+    images: "/logo-boletas.png",
+  },
 };
 
 export default function RootLayout({
