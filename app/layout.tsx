@@ -12,10 +12,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-/** URL pública del sitio: obligatoria para resolver OG/Twitter a URLs absolutas. En Vercel define NEXT_PUBLIC_SITE_URL (p. ej. https://tu-dominio.com). */
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+/**
+ * URL canónica del sitio (metadataBase). Open Graph / Twitter convierten rutas relativas aquí.
+ * - NEXT_PUBLIC_SITE_URL: tu dominio definitivo (recomendado en Vercel → Environment Variables).
+ * - VERCEL_PROJECT_PRODUCTION_URL: hostname estable de producción (p. ej. boletas-dmo.vercel.app),
+ *   a diferencia de VERCEL_URL que es la URL única del deploy y puede exigir login en previews.
+ */
+function getSiteUrl() {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim()
+  if (explicit) return explicit.replace(/\/$/, "")
+
+  const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim()
+  if (productionHost) return `https://${productionHost.replace(/^https?:\/\//, "")}`
+
+  const deploymentHost = process.env.VERCEL_URL?.trim()
+  if (deploymentHost) return `https://${deploymentHost.replace(/^https?:\/\//, "")}`
+
+  return "http://localhost:3000"
+}
+
+const siteUrl = getSiteUrl()
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
