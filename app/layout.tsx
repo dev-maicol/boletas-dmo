@@ -52,7 +52,7 @@ async function siteUrlFromRequest(): Promise<string> {
 export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = await siteUrlFromRequest()
   const metadataBase = new URL(siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`)
-  const ogImageUrl = new URL("/logoboletas.png", metadataBase).toString()
+  const ogImageUrl = new URL("/logoboletas3.png", metadataBase).toString()
 
   return {
     metadataBase,
@@ -60,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Sistema de boletas de pago para DMO S.R.L. - Generación, envío y seguimiento de boletas de pago.",
     icons: {
-      icon: [{ url: "/logoboletas.png", type: "image/png" }],
+      icon: [{ url: "/logoboletas3.png", type: "image/png" }],
     },
     openGraph: {
       type: "website",
