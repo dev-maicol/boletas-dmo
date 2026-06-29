@@ -18,8 +18,10 @@ jobs:
     steps:
       - name: Consulta ligera a Supabase REST
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          # Acepta el valor tanto si se guardo como Secret como si se guardo
+          # como Variable en Settings -> Secrets and variables -> Actions.
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || vars.SUPABASE_ANON_KEY }}
         run: |
           curl --fail --silent --show-error \
             "${SUPABASE_URL}/rest/v1/trabajadores?select=id&limit=1" \
